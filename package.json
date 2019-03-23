@@ -17,10 +17,11 @@
   },
   "lint-staged": {
     "*.{vue,js}": [
+      "prettier --write",
       "eslint --fix",
       "git add"
     ],
-    "*.{js,css,json,md,html}": [
+    "*.{css,json,md,html}": [
       "prettier --write",
       "git add"
     ]
