@@ -3,13 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "vue-cli-service test:unit"
+    }
+  },
+  "lint-staged": {
+    "*.{vue,js}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,css,json,md,html}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
+    "buefy": "^0.7.3",
+    "escape-string-regexp": "^1.0.5",
+    "lodash": "^4.17.11",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -26,8 +45,13 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
+    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jsdoc": "^4.4.3",
     "eslint-plugin-vue": "^5.0.0",
     "fibers": "^3.1.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
     "sass": "^1.17.2",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
